@@ -6,7 +6,7 @@ function LoginForm() {
         <body class="dark-mode">
         <div className="container d-flex justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
             <div class="center-container">
-                <form>
+                <form className="glass">
                     <div className="form-floating my-3 text-info">
                         <h2 className="h2 text-center">Login</h2>
                     </div>
