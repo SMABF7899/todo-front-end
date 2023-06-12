@@ -1,7 +1,7 @@
 import React from 'react';
-import './Form.css'
+import '../css/Form.css';
 
-function Login() {
+function LoginForm() {
     return (
         <body class="dark-mode">
         <div className="container d-flex justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
@@ -28,4 +28,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginForm;
