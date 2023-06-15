@@ -1,0 +1,22 @@
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode input {
+    background-color: #444;
+    color: #fff;
+    border-color: #666;
+}
+
+.center-container {
+    width: 500px;
+}
+
+form.glass {
+    background-color: #ffffff29;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+}
