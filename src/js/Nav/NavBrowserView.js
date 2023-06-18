@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../assets/TODO.png';
-import '../css/Form.css'
+import logo from '../../assets/TODO.png';
+import '../../css/Form.css'
 import {Link} from 'react-router-dom';
 
 function NavBrowserView() {

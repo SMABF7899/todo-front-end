@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../assets/TODO.png';
-import '../css/Form.css'
+import logo from '../../assets/TODO.png';
+import '../../css/Form.css'
 
 function NavMobileView() {
     return (
@@ -24,10 +24,10 @@ function NavMobileView() {
                     <div className="offcanvas-body">
                         <ul className="navbar-nav flex-grow-1 pe-3">
                             <li className="nav-item">
-                                <a className="nav-link" href="/login">Login</a>
+                                <a className="nav-link" href="/src/js/Main/Login">Login</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/signup">Signup</a>
+                                <a className="nav-link" href="/src/js/Main/Signup">Signup</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/about">About</a>

@@ -1,5 +1,5 @@
-import logo from '../assets/TODO_WHITE.png';
-import '../css/Home.css';
+import logo from '../../assets/TODO_WHITE.png';
+import '../../css/Home.css';
 
 function Home() {
     return (
