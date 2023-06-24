@@ -1,0 +1,30 @@
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.task-list li span {
+    margin-right: 8px;
+}
+
+.task-list li span:last-child {
+    margin-right: 0;
+}
+
+.task-list li button {
+    margin-left: 8px;
+}
+
+.task-list-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
