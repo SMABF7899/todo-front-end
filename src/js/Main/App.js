@@ -2,7 +2,7 @@ import {Outlet, BrowserRouter, Route, Link, Routes} from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
-import Nav from './Nav';
+import Nav from '../Nav/Nav';
 
 function App() {
     return (
