@@ -22,10 +22,9 @@ const List = () => {
 
     const addTask = async () => {
         if (taskInput.trim() !== '') {
-            // ارسال درخواست POST به API برای افزودن وظیفه جدید
             try {
-                await axios.post('your-api-endpoint', { title: taskInput }); // جایگزین کنید با آدرس API واقعی
-                fetchData(); // بازیابی اطلاعات بروز شده از سرور
+                await axios.post('your-api-endpoint', { title: taskInput });
+                fetchData();
                 setTaskInput('');
             } catch (error) {
                 console.error('Error adding task:', error);
@@ -34,10 +33,9 @@ const List = () => {
     };
 
     const deleteTask = async (taskId) => {
-        // ارسال درخواست DELETE به API برای حذف وظیفه
         try {
-            await axios.delete(`your-api-endpoint/${taskId}`); // جایگزین کنید با آدرس API واقعی
-            fetchData(); // بازیابی اطلاعات بروز شده از سرور
+            await axios.delete(`your-api-endpoint/${taskId}`);
+            fetchData();
         } catch (error) {
             console.error('Error deleting task:', error);
         }
