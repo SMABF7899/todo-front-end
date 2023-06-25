@@ -25,15 +25,17 @@ export const handleFormChange = (event, formData, setFormData) => {
 };
 
 
-export const handleSubmitForm = (event, formSignupData, submitFormSignupData, navigate, navigatePath, key) => {
+export const handleSubmitForm = (event, formData, submitFormData, navigate, navigatePath, key) => {
     event.preventDefault();
 
-    submitFormSignupData(formSignupData)
+    submitFormData(formData)
         .then(data => {
             displayMessage(data.message)
             console.log(data.message);
-            if (key != null)
-                localStorage.setItem(key, data.jwt)
+            if (key != null && key === 'Token') {
+                localStorage.setItem(key, data.jwt);
+                localStorage.setItem('Username', formData.username);
+            }
             setTimeout(() => {
                 navigate(navigatePath);
             }, 2000);
