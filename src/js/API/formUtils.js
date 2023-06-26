@@ -1,5 +1,8 @@
 // File: formUtils.js
 
+import {getIssuesData} from "./api";
+import data from "bootstrap/js/src/dom/data";
+
 export const signupFormData = {
     firstName: '',
     lastName: '',
@@ -42,6 +45,19 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
         })
         .catch(error => {
             displayMessage(error.response.data.message)
+            console.error(error.response.data.message);
+        });
+};
+
+export const handleGetIssuesData = (event, getIssuesData) => {
+    // event.preventDefault();
+
+    getIssuesData()
+        .then(data => {
+            console.log(data.message);
+            return data.message;
+        })
+        .catch(error => {
             console.error(error.response.data.message);
         });
 };
