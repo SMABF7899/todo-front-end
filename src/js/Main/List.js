@@ -15,7 +15,6 @@ const List = () => {
         })
             .then(response => {
                 setData(response.data.message);
-                console.log(response.data.message)
             })
             .catch(error => {
                 console.log(error);
@@ -33,10 +32,6 @@ const List = () => {
         fetchData()
     }, []);
 
-    const handleAddTask = (taskData) => {
-        console.log(taskData);
-    };
-
     return (
         <div className="container">
             <h1 className="mb-4">Todo List</h1>
@@ -48,8 +43,7 @@ const List = () => {
                 />
             </div>
             <div className="mb-3">
-                <button className="btn btn-danger me-3" onClick={fetchData}>Update</button>
-                <AddTaskModal onAddTask={handleAddTask}/>
+                <AddTaskModal/>
             </div>
             <table className="table">
                 <thead className="table-dark">

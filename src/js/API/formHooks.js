@@ -2,16 +2,8 @@
 
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {
-    signupFormData,
-    loginFormData,
-    handleFormChange,
-    handleSubmitForm,
-    issueFormData,
-    handleDataIssuesSubmit,
-    handleDataIssuesChange
-} from './formUtils';
-import {submitFormSignupData, submitFormLoginData, getDataIssues} from './api';
+import {signupFormData, loginFormData, handleFormChange, handleSubmitForm} from './formUtils';
+import {submitFormSignupData, submitFormLoginData} from './api';
 
 export const useFormSignup = () => {
     const navigate = useNavigate();
@@ -44,17 +36,3 @@ export const useFormLogin = () => {
 
     return {formLoginData, handleChange, handleSubmit};
 };
-
-export const useDataIssues = () => {
-    const [formIssueData, setFormIssueData] = useState(issueFormData);
-
-    const handleChange = (event) => {
-        handleDataIssuesChange(event, formIssueData, setFormIssueData, getDataIssues);
-    };
-
-    const handleSubmit = (event) => {
-        handleDataIssuesSubmit(event, formIssueData, getDataIssues);
-    };
-
-    return {formIssueData, handleSubmit, handleChange, getDataIssues};
-}

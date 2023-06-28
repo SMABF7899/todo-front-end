@@ -1,8 +1,5 @@
 // File: formUtils.js
 
-import {getIssuesData} from "./api";
-import data from "bootstrap/js/src/dom/data";
-
 export const signupFormData = {
     firstName: '',
     lastName: '',
@@ -14,15 +11,6 @@ export const signupFormData = {
 export const loginFormData = {
     username: '',
     password: ''
-};
-
-export const issueFormData = {
-    id: '',
-    summary: '',
-    reporter: '',
-    description: '',
-    priority: '',
-    condition: ''
 };
 
 export const displayMessage = (message) => {
@@ -71,12 +59,4 @@ export const handleDataIssuesSubmit = (event, formData, submitFormData) => {
             displayMessage(error.response.data.message)
             console.error(error.response.data.message);
         });
-};
-
-export const handleDataIssuesChange = (event, formData, setFormData, submitFormData) => {
-    // setFormData({ ...formData, [event.target.name]: event.target.value });
-    submitFormData()
-        .then(data => {
-            setFormData(data.message)
-        })
 };
