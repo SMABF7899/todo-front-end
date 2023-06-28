@@ -13,6 +13,14 @@ export const loginFormData = {
     password: ''
 };
 
+export const issueFormData = {
+    summary: '',
+    reporter: '',
+    description: '',
+    priority: '',
+    condition: ''
+};
+
 export const displayMessage = (message) => {
     const infoElement = document.getElementById('info-message');
     if (infoElement) {

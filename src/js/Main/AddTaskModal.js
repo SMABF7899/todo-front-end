@@ -1,37 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import {useFormIssue} from "../API/formHooks";
 
 const AddTaskModal = ({ onAddTask }) => {
+    const {formIssueData, handleChangeData, handleSubmitData} = useFormIssue();
+    formIssueData.reporter = localStorage.getItem('Username');
     const [show, setShow] = useState(false);
-    const [taskData, setTaskData] = useState({
-        summary: '',
-        description: '',
-        priority: '',
-        condition: '',
-    });
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setTaskData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onAddTask(taskData);
-        setTaskData({
-            summary: '',
-            description: '',
-            priority: '',
-            condition: '',
-        });
-        handleClose();
-    };
 
     return (
         <body className="dark-mode">
@@ -44,14 +21,23 @@ const AddTaskModal = ({ onAddTask }) => {
                     <Modal.Title>Add Issue</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmitData}>
                         <Form.Group controlId="summary">
                             <Form.Label>Summary</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="summary"
-                                value={taskData.summary}
-                                onChange={handleChange}
+                                value={formIssueData.summary}
+                                onChange={handleChangeData}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="reporter">
+                            <Form.Label>Reporter</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="reporter"
+                                value={formIssueData.reporter}
+                                onChange={handleChangeData}
                             />
                         </Form.Group>
                         <Form.Group controlId="description">
@@ -60,26 +46,26 @@ const AddTaskModal = ({ onAddTask }) => {
                                 as="textarea"
                                 rows={3}
                                 name="description"
-                                value={taskData.description}
-                                onChange={handleChange}
+                                value={formIssueData.description}
+                                onChange={handleChangeData}
                             />
                         </Form.Group>
                         <Form.Group controlId="priority">
                             <Form.Label>Priority</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="number"
                                 name="priority"
-                                value={taskData.priority}
-                                onChange={handleChange}
+                                value={formIssueData.priority}
+                                onChange={handleChangeData}
                             />
                         </Form.Group>
                         <Form.Group controlId="condition">
                             <Form.Label>Condition</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="number"
                                 name="condition"
-                                value={taskData.condition}
-                                onChange={handleChange}
+                                value={formIssueData.condition}
+                                onChange={handleChangeData}
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit" className="mt-3">

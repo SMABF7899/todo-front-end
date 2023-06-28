@@ -47,7 +47,7 @@ export const GetIssuesData = (setDataIssues) => {
         .catch(error => {
             throw error;
         })
-}
+};
 
 export const DeleteIssueData = (formData) => {
     const token = localStorage.getItem('Token');
@@ -63,4 +63,20 @@ export const DeleteIssueData = (formData) => {
         .catch(error => {
             throw error;
         })
-}
+};
+
+export const submitFormIssueData = (formData) => {
+    const formDataJson = JSON.stringify(formData);
+    const token = localStorage.getItem('Token');
+    return axios.post('http://127.0.0.1:5000/createIssue?jwt=' + token, formDataJson, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error;
+        });
+};
