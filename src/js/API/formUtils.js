@@ -45,18 +45,3 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
             console.error(error.response.data.message);
         });
 };
-
-export const handleDataIssuesSubmit = (event, formData, submitFormData) => {
-    event.preventDefault();
-
-    submitFormData(formData)
-        .then(data => {
-            displayMessage(data.message)
-            console.log(data.message);
-            return data.message;
-        })
-        .catch(error => {
-            displayMessage(error.response.data.message)
-            console.error(error.response.data.message);
-        });
-};
