@@ -34,14 +34,14 @@ const AddTaskModal = ({ onAddTask }) => {
     };
 
     return (
-        <>
-            <Button variant="success" onClick={handleShow}>
-                Add Task
+        <body className="dark-mode">
+            <Button variant="outline-success" onClick={handleShow}>
+                Add Issue
             </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Task</Modal.Title>
+                    <Modal.Title>Add Issue</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
@@ -88,7 +88,7 @@ const AddTaskModal = ({ onAddTask }) => {
                     </Form>
                 </Modal.Body>
             </Modal>
-        </>
+        </body>
     );
 };
 
