@@ -16,6 +16,15 @@ export const loginFormData = {
     password: ''
 };
 
+export const issueFormData = {
+    id: '',
+    summary: '',
+    reporter: '',
+    description: '',
+    priority: '',
+    condition: ''
+};
+
 export const displayMessage = (message) => {
     const infoElement = document.getElementById('info-message');
     if (infoElement) {
@@ -49,15 +58,25 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
         });
 };
 
-export const handleGetIssuesData = (event, getIssuesData) => {
-    // event.preventDefault();
+export const handleDataIssuesSubmit = (event, formData, submitFormData) => {
+    event.preventDefault();
 
-    getIssuesData()
+    submitFormData(formData)
         .then(data => {
+            displayMessage(data.message)
             console.log(data.message);
             return data.message;
         })
         .catch(error => {
+            displayMessage(error.response.data.message)
             console.error(error.response.data.message);
         });
+};
+
+export const handleDataIssuesChange = (event, formData, setFormData, submitFormData) => {
+    // setFormData({ ...formData, [event.target.name]: event.target.value });
+    submitFormData()
+        .then(data => {
+            setFormData(data.message)
+        })
 };
