@@ -36,10 +36,6 @@ const List = () => {
         }, 250);
     }
 
-    const handleAddTask = (taskData) => {
-        console.log(taskData);
-    };
-
     return (
         <body className="dark-mode">
         <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
@@ -52,7 +48,7 @@ const List = () => {
                 />
             </div>
             <div className="mb-3">
-                <AddTaskModal onAddTask={handleAddTask}/>
+                <AddTaskModal/>
             </div>
             {(dataIssues.length === 0) ?
                 <figure>
