@@ -53,3 +53,20 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
             console.error(error.response.data.message);
         });
 };
+
+export const handleSubmitFormIssue = (event, formData, submitFormData, navigate, navigatePath) => {
+    event.preventDefault();
+    formData.priority = parseInt(formData.priority)
+    formData.condition = parseInt(formData.condition)
+
+    submitFormData(formData)
+        .then(data => {
+            console.log(data.message);
+            setTimeout(() => {
+                navigate(navigatePath);
+            }, 2000);
+        })
+        .catch(error => {
+            console.error(error.response.data.message);
+        });
+};
