@@ -45,12 +45,14 @@ export const useFormLogin = () => {
 };
 
 export const useFormIssue = () => {
+    const navigate = useNavigate();
+    const navigatePath = '/dashboard';
     const [formIssueData, setFormIssueData] = useState(issueFormData);
     const handleChangeData = (event) => {
         handleFormChange(event, formIssueData, setFormIssueData);
     };
     const handleSubmitData = (event) => {
-        handleSubmitFormIssue(event, formIssueData, submitFormIssueData);
+        handleSubmitFormIssue(event, formIssueData, submitFormIssueData, navigate, navigatePath);
     };
     return {formIssueData, handleChangeData, handleSubmitData};
 };
