@@ -31,8 +31,9 @@ const List = () => {
                 .then()
                 .catch(error => {
                     console.log("ERROR 2 : " + error.response.data.message);
+                    window.location.reload();
                 })
-        }, 500);
+        }, 250);
     }
 
     return (
@@ -59,7 +60,7 @@ const List = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {dataIssues.map((task) => (
+                {(dataIssues.length === 0) ? <p>شما تسکی ندارید</p> : dataIssues.map((task) => (
                     <tr key={task.id}>
                         <td className="text-center">{task.id}</td>
                         <td className="text-center">{task.summary.length > 50 ? `${task.summary.slice(0, 50)}...` : task.summary}</td>
