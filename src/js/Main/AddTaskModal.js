@@ -10,6 +10,12 @@ const AddTaskModal = ({ onAddTask }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const reloadPage = () => {
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    };
+
     return (
         <body className="dark-mode">
             <Button variant="outline-success" onClick={handleShow}>
@@ -38,6 +44,7 @@ const AddTaskModal = ({ onAddTask }) => {
                                 name="reporter"
                                 value={formIssueData.reporter}
                                 onChange={handleChangeData}
+                                disabled
                             />
                         </Form.Group>
                         <Form.Group controlId="description">
@@ -59,18 +66,10 @@ const AddTaskModal = ({ onAddTask }) => {
                                 onChange={handleChangeData}
                             />
                         </Form.Group>
-                        <Form.Group controlId="condition">
-                            <Form.Label>Condition</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name="condition"
-                                value={formIssueData.condition}
-                                onChange={handleChangeData}
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-3">
+                        <Button variant="primary" type="submit" className="mt-3" onClick={reloadPage}>
                             Add
                         </Button>
+                        <p id="info-message" className="info"></p> {}
                     </Form>
                 </Modal.Body>
             </Modal>
