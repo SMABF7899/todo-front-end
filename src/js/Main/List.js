@@ -1,7 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
 import "../../css/List.css"
 import AddTaskModal from "./AddTaskModal";
-import {GetIssuesData, DeleteIssueData} from "../API/api";
+import ShowInfoIssue from "./ShowInfoIssue";
+import EditDataIssue from "./EditDataIssue";
+import {GetAllIssues, DeleteIssueData} from "../API/api";
 
 const List = () => {
     const [dataIssues, setDataIssues] = useState([]);
@@ -13,7 +15,7 @@ const List = () => {
             return;
         }
 
-        GetIssuesData(setDataIssues)
+        GetAllIssues(setDataIssues)
             .then()
             .catch(error => {
                 console.log("ERROR 1 : " + error.response.data.message);
@@ -27,7 +29,7 @@ const List = () => {
         }
         DeleteIssueData(jsonData)
         setTimeout(() => {
-            GetIssuesData(setDataIssues)
+            GetAllIssues(setDataIssues)
                 .then()
                 .catch(error => {
                     console.log("ERROR 2 : " + error.response.data.message);
@@ -77,11 +79,11 @@ const List = () => {
                             <td className="text-center">{task.priority}</td>
                             <td className="text-center">{task.condition}</td>
                             <td className="text-center">
-                                <button className="btn btn-outline-danger me-3"
+                                <button className="btn btn-outline-danger mx-3"
                                         onClick={() => deleteIssue(task.id, task.reporter)}>Delete
                                 </button>
-                                <button className="btn btn-outline-info me-3">Show Info</button>
-                                <button className="btn btn-outline-warning">Edit</button>
+                                <ShowInfoIssue onViewIssue={task}/>
+                                <EditDataIssue onEditIssue={task}/>
                             </td>
                         </tr>
                     ))}
