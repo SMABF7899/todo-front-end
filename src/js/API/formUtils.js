@@ -17,8 +17,15 @@ export const issueFormData = {
     summary: '',
     reporter: '',
     description: '',
-    priority: '',
-    condition: ''
+    priority: ''
+};
+
+export const issueFormEditData = {
+    id: '',
+    summary: '',
+    reporter: '',
+    description: '',
+    priority: ''
 };
 
 export const displayMessage = (message) => {
@@ -54,19 +61,34 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
         });
 };
 
-export const handleSubmitFormIssue = (event, formData, submitFormData, navigate, navigatePath) => {
+export const handleSubmitFormIssue = (event, formData, submitFormData) => {
     event.preventDefault();
+    formData.priority = parseInt(formData.priority)
+
+    submitFormData(formData)
+        .then(data => {
+            console.log(data.message);
+            displayMessage(data.message);
+        })
+        .catch(error => {
+            console.error(error.response.data.message);
+            displayMessage(error.response.data.message);
+        });
+};
+
+export const handleSubmitFormIssueEdit = (event, formData, submitFormData) => {
+    event.preventDefault();
+    formData.id = parseInt(formData.id)
     formData.priority = parseInt(formData.priority)
     formData.condition = parseInt(formData.condition)
 
     submitFormData(formData)
         .then(data => {
             console.log(data.message);
-            setTimeout(() => {
-                navigate(navigatePath);
-            }, 2000);
+            displayMessage(data.message);
         })
         .catch(error => {
             console.error(error.response.data.message);
+            displayMessage(error.response.data.message);
         });
 };
