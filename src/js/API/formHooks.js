@@ -6,11 +6,13 @@ import {
     signupFormData,
     loginFormData,
     issueFormData,
+    issueFormEditData,
     handleFormChange,
     handleSubmitForm,
-    handleSubmitFormIssue
+    handleSubmitFormIssue,
+    handleSubmitFormIssueEdit
 } from './formUtils';
-import {submitFormSignupData, submitFormLoginData, submitFormIssueData} from './api';
+import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData} from './api';
 
 export const useFormSignup = () => {
     const navigate = useNavigate();
@@ -45,14 +47,23 @@ export const useFormLogin = () => {
 };
 
 export const useFormIssue = () => {
-    const navigate = useNavigate();
-    const navigatePath = '/dashboard';
     const [formIssueData, setFormIssueData] = useState(issueFormData);
     const handleChangeData = (event) => {
         handleFormChange(event, formIssueData, setFormIssueData);
     };
     const handleSubmitData = (event) => {
-        handleSubmitFormIssue(event, formIssueData, submitFormIssueData, navigate, navigatePath);
+        handleSubmitFormIssue(event, formIssueData, submitFormIssueData);
+    };
+    return {formIssueData, handleChangeData, handleSubmitData};
+};
+
+export const useFormIssueEdit = () => {
+    const [formIssueData, setFormIssueData] = useState(issueFormEditData);
+    const handleChangeData = (event) => {
+        handleFormChange(event, formIssueData, setFormIssueData);
+    };
+    const handleSubmitData = (event) => {
+        handleSubmitFormIssueEdit(event, formIssueData, submitFormIssueEditData);
     };
     return {formIssueData, handleChangeData, handleSubmitData};
 };
