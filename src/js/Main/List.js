@@ -3,6 +3,7 @@ import "../../css/List.css"
 import AddTaskModal from "./AddTaskModal";
 import ShowInfoIssue from "./ShowInfoIssue";
 import EditDataIssue from "./EditDataIssue";
+import FilterIssuesData from "./FilterIssues/FilterIssuesData";
 import {GetAllIssues, DeleteIssueData} from "../API/api";
 
 const List = () => {
@@ -43,13 +44,6 @@ const List = () => {
         <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
             <h1 className="mb-4">Todo List</h1>
             <div className="mb-3">
-                <input
-                    type="text"
-                    placeholder="Search Issue ..."
-                    className="form-control"
-                />
-            </div>
-            <div className="mb-3">
                 <AddTaskModal/>
             </div>
             {(dataIssues.length === 0) ?
@@ -61,34 +55,38 @@ const List = () => {
                         Click on <cite title="Source Title">Add Issue</cite>
                     </figcaption>
                 </figure> :
-                <table className="table dark-mode">
-                    <thead className="table-dark">
-                    <tr>
-                        <th scope="col" className="text-center">ID</th>
-                        <th scope="col" className="text-center">Summary</th>
-                        <th scope="col" className="text-center">Priority</th>
-                        <th scope="col" className="text-center">Condition</th>
-                        <th scope="col" className="text-center">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {dataIssues.map((task) => (
-                        <tr key={task.id}>
-                            <td className="text-center">{task.id}</td>
-                            <td className="text-center">{task.summary.length > 50 ? `${task.summary.slice(0, 50)}...` : task.summary}</td>
-                            <td className="text-center">{task.priority}</td>
-                            <td className="text-center">{task.condition}</td>
-                            <td className="text-center">
-                                <button className="btn btn-outline-danger mx-3"
-                                        onClick={() => deleteIssue(task.id, task.reporter)}>Delete
-                                </button>
-                                <ShowInfoIssue onViewIssue={task}/>
-                                <EditDataIssue onEditIssue={task}/>
-                            </td>
+                <div className="text-center justify-content-center align-items-center dark-mode">
+                    <FilterIssuesData/>
+                    <table className="table dark-mode mt-3">
+                        <thead className="table-dark">
+                        <tr>
+                            <th scope="col" className="text-center">ID</th>
+                            <th scope="col" className="text-center">Summary</th>
+                            <th scope="col" className="text-center">Priority</th>
+                            <th scope="col" className="text-center">Condition</th>
+                            <th scope="col" className="text-center">Actions</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>}
+                        </thead>
+                        <tbody>
+                        {dataIssues.map((task) => (
+                            <tr key={task.id}>
+                                <td className="text-center">{task.id}</td>
+                                <td className="text-center">{task.summary.length > 50 ? `${task.summary.slice(0, 50)}...` : task.summary}</td>
+                                <td className="text-center">{task.priority}</td>
+                                <td className="text-center">{task.condition}</td>
+                                <td className="text-center">
+                                    <button className="btn btn-outline-danger mx-3"
+                                            onClick={() => deleteIssue(task.id, task.reporter)}>Delete
+                                    </button>
+                                    <ShowInfoIssue onViewIssue={task}/>
+                                    <EditDataIssue onEditIssue={task}/>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+                }
         </div>
         </body>
     );
