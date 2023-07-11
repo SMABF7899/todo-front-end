@@ -2,8 +2,19 @@
 
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {signupFormData, loginFormData, handleFormChange, handleSubmitForm} from './formUtils';
-import {submitFormSignupData, submitFormLoginData} from './api';
+import {
+    signupFormData,
+    loginFormData,
+    issueFormData,
+    issueFormEditData,
+    issuesFormFilterData,
+    handleFormChange,
+    handleSubmitForm,
+    handleSubmitFormIssue,
+    handleSubmitFormIssueEdit,
+    handleSubmitFormIssuesFilter
+} from './formUtils';
+import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData, SubmitFormIssuesFilterData} from './api';
 
 export const useFormSignup = () => {
     const navigate = useNavigate();
@@ -36,3 +47,36 @@ export const useFormLogin = () => {
 
     return {formLoginData, handleChange, handleSubmit};
 };
+
+export const useFormIssue = () => {
+    const [formIssueData, setFormIssueData] = useState(issueFormData);
+    const handleChangeData = (event) => {
+        handleFormChange(event, formIssueData, setFormIssueData);
+    };
+    const handleSubmitData = (event) => {
+        handleSubmitFormIssue(event, formIssueData, submitFormIssueData);
+    };
+    return {formIssueData, handleChangeData, handleSubmitData};
+};
+
+export const useFormIssueEdit = () => {
+    const [formIssueData, setFormIssueData] = useState(issueFormEditData);
+    const handleChangeData = (event) => {
+        handleFormChange(event, formIssueData, setFormIssueData);
+    };
+    const handleSubmitData = (event) => {
+        handleSubmitFormIssueEdit(event, formIssueData, submitFormIssueEditData);
+    };
+    return {formIssueData, handleChangeData, handleSubmitData};
+};
+
+export const useFormIssuesFilter = () => {
+    const [formIssuesFilter, setFormIssuesFilter] = useState(issuesFormFilterData);
+    const [formDataIssuesFilter, setFormDataIssuesFilter] = useState([]);
+
+    const handleSubmitData = (event) => {
+        handleSubmitFormIssuesFilter(event, formIssuesFilter, setFormDataIssuesFilter, SubmitFormIssuesFilterData);
+    };
+
+    return {formIssuesFilter, handleSubmitData, formDataIssuesFilter, setFormDataIssuesFilter};
+}

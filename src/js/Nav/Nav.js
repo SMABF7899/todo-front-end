@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserView, MobileView} from 'react-device-detect';
-import logo from '../../assets/TODO.png';
 import '../../css/Form.css'
 import NavBrowserView from "./NavBrowserView";
 import NavMobileView from "./NavMobileView";
