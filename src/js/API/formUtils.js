@@ -25,8 +25,16 @@ export const issueFormEditData = {
     summary: '',
     reporter: '',
     description: '',
-    priority: ''
+    priority: '',
+    condition: ''
 };
+
+export const issuesFormFilterData = {
+    reporter: '',
+    time: '',
+    priority: '',
+    condition: ''
+}
 
 export const displayMessage = (message) => {
     const infoElement = document.getElementById('info-message');
@@ -78,9 +86,9 @@ export const handleSubmitFormIssue = (event, formData, submitFormData) => {
 
 export const handleSubmitFormIssueEdit = (event, formData, submitFormData) => {
     event.preventDefault();
-    formData.id = parseInt(formData.id)
-    formData.priority = parseInt(formData.priority)
-    formData.condition = parseInt(formData.condition)
+    formData.id = parseInt(formData.id);
+    formData.priority = parseInt(formData.priority);
+    formData.condition = parseInt(formData.condition);
 
     submitFormData(formData)
         .then(data => {

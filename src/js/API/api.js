@@ -96,3 +96,19 @@ export const submitFormIssueEditData = (formData) => {
             throw error;
         });
 };
+
+export const SubmitFormIssuesFilterData = (formData) => {
+    const formDataJson = JSON.stringify(formData);
+    const token = localStorage.getItem('Token');
+    return axios.post('http://localhost:5000/filterIssues?jwt=' + token, formDataJson, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error;
+        });
+};

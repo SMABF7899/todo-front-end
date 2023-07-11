@@ -3,8 +3,8 @@ import "../../css/List.css"
 import AddTaskModal from "./AddTaskModal";
 import ShowInfoIssue from "./ShowInfoIssue";
 import EditDataIssue from "./EditDataIssue";
-import FilterIssuesData from "./FilterIssues/FilterIssuesData";
 import {GetAllIssues, DeleteIssueData} from "../API/api";
+
 
 const List = () => {
     const [dataIssues, setDataIssues] = useState([]);
@@ -43,7 +43,7 @@ const List = () => {
         <body className="dark-mode">
         <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
             <h1 className="mb-4">Todo List</h1>
-            <div className="mb-3">
+            <div className="mb-5">
                 <AddTaskModal/>
             </div>
             {(dataIssues.length === 0) ?
@@ -55,8 +55,7 @@ const List = () => {
                         Click on <cite title="Source Title">Add Issue</cite>
                     </figcaption>
                 </figure> :
-                <div className="text-center justify-content-center align-items-center dark-mode">
-                    <FilterIssuesData/>
+                <div className="text-center justify-content-center align-items-center dark-mode glass">
                     <table className="table dark-mode mt-3">
                         <thead className="table-dark">
                         <tr>

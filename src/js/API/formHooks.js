@@ -10,7 +10,7 @@ import {
     handleFormChange,
     handleSubmitForm,
     handleSubmitFormIssue,
-    handleSubmitFormIssueEdit
+    handleSubmitFormIssueEdit,
 } from './formUtils';
 import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData} from './api';
 

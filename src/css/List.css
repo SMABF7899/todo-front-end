@@ -39,3 +39,11 @@ body.dark-mode td {
     color: #fff;
     border-color: #666;
 }
+
+div.glass {
+    background-color: #ffffff29;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+}
