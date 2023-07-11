@@ -28,7 +28,7 @@ const EditDataIssue = ({onEditIssue}) => {
 
     return (
         <>
-            <Button variant="outline-warning mx-3" onClick={handleShow}>
+            <Button variant="warning mx-3" onClick={handleShow}>
                 Edit
             </Button>
 

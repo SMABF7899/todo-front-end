@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import {useFormIssue} from "../API/formHooks";
 
-const AddTaskModal = ({ onAddTask }) => {
+const AddDataIssue = () => {
     const {formIssueData, handleChangeData, handleSubmitData} = useFormIssue();
     formIssueData.reporter = localStorage.getItem('Username');
     const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ const AddTaskModal = ({ onAddTask }) => {
 
     return (
         <body className="dark-mode">
-            <Button variant="outline-success" onClick={handleShow}>
+            <Button variant="success" onClick={handleShow}>
                 Add Issue
             </Button>
 
@@ -77,4 +77,4 @@ const AddTaskModal = ({ onAddTask }) => {
     );
 };
 
-export default AddTaskModal;
+export default AddDataIssue;

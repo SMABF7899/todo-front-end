@@ -7,12 +7,14 @@ import {
     loginFormData,
     issueFormData,
     issueFormEditData,
+    issuesFormFilterData,
     handleFormChange,
     handleSubmitForm,
     handleSubmitFormIssue,
     handleSubmitFormIssueEdit,
+    handleSubmitFormIssuesFilter
 } from './formUtils';
-import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData} from './api';
+import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData, SubmitFormIssuesFilterData} from './api';
 
 export const useFormSignup = () => {
     const navigate = useNavigate();
@@ -67,3 +69,14 @@ export const useFormIssueEdit = () => {
     };
     return {formIssueData, handleChangeData, handleSubmitData};
 };
+
+export const useFormIssuesFilter = () => {
+    const [formIssuesFilter, setFormIssuesFilter] = useState(issuesFormFilterData);
+    const [formDataIssuesFilter, setFormDataIssuesFilter] = useState([]);
+
+    const handleSubmitData = (event) => {
+        handleSubmitFormIssuesFilter(event, formIssuesFilter, setFormDataIssuesFilter, SubmitFormIssuesFilterData);
+    };
+
+    return {formIssuesFilter, handleSubmitData, formDataIssuesFilter, setFormDataIssuesFilter};
+}

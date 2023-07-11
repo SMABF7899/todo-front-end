@@ -36,7 +36,7 @@ export const submitFormLoginData = (formData) => {
 export const GetAllIssues = (setDataIssues) => {
     const username = localStorage.getItem('Username');
     const token = localStorage.getItem('Token')
-    return axios.post('http://localhost:5000/allIssues?reporter=' + username + '&jwt=' + token, {
+    return axios.post('http://127.0.0.1:5000/allIssues?reporter=' + username + '&jwt=' + token, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -84,7 +84,7 @@ export const submitFormIssueData = (formData) => {
 export const submitFormIssueEditData = (formData) => {
     const formDataJson = JSON.stringify(formData);
     const token = localStorage.getItem('Token');
-    return axios.post('http://localhost:5000/editIssue?jwt=' + token, formDataJson, {
+    return axios.post('http://127.0.0.1:5000/editIssue?jwt=' + token, formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -100,7 +100,7 @@ export const submitFormIssueEditData = (formData) => {
 export const SubmitFormIssuesFilterData = (formData) => {
     const formDataJson = JSON.stringify(formData);
     const token = localStorage.getItem('Token');
-    return axios.post('http://localhost:5000/filterIssues?jwt=' + token, formDataJson, {
+    return axios.post('http://127.0.0.1:5000/filterIssues?jwt=' + token, formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }

@@ -9,7 +9,7 @@ const ShowInfoIssue = ({onViewIssue}) => {
 
     return (
         <>
-            <Button variant="outline-info" onClick={handleShow}>
+            <Button variant="info" onClick={handleShow}>
                 Show Info
             </Button>
 

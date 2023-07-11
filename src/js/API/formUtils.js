@@ -100,3 +100,25 @@ export const handleSubmitFormIssueEdit = (event, formData, submitFormData) => {
             displayMessage(error.response.data.message);
         });
 };
+
+export const handleSubmitFormIssuesFilter = (event, formData, setFormData, submitFormData) => {
+    event.preventDefault();
+    const username = localStorage.getItem('Username');
+    if (formData.priority === '')
+        formData.priority = 0;
+    else
+        formData.priority = parseInt(formData.priority);
+    if (formData.condition === '')
+        formData.condition = 0;
+    else
+        formData.condition = parseInt(formData.condition);
+    formData.reporter = username;
+
+    submitFormData(formData)
+        .then(data => {
+            setFormData(data.message)
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
