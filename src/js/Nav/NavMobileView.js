@@ -24,10 +24,13 @@ function NavMobileView() {
                     <div className="offcanvas-body">
                         <ul className="navbar-nav flex-grow-1 pe-3">
                             <li className="nav-item">
-                                <a className="nav-link" href="/src/js/Main/Login">Login</a>
+                                <a className="nav-link" href="/">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/src/js/Main/Signup">Signup</a>
+                                <a className="nav-link" href="/login">Login</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/signup">Signup</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/about">About</a>
