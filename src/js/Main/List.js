@@ -51,6 +51,24 @@ const List = () => {
         }, 250);
     }
 
+    const PriorityShow = (priority) => {
+        if (priority === 1)
+            return "Low"
+        if (priority === 2)
+            return "Medium"
+        if (priority === 3)
+            return "High"
+    }
+
+    const ConditionShow = (condition) => {
+        if (condition === 1)
+            return "To Do"
+        if (condition === 2)
+            return "In Progress"
+        if (condition === 3)
+            return "Done"
+    }
+
     return (
         <body className="dark-mode">
         <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
@@ -137,8 +155,8 @@ const List = () => {
                             <tr key={issue.id}>
                                 <td className="text-center">{issue.id}</td>
                                 <td className="text-center">{issue.summary.length > 50 ? `${issue.summary.slice(0, 50)}...` : issue.summary}</td>
-                                <td className="text-center">{issue.priority}</td>
-                                <td className="text-center">{issue.condition}</td>
+                                <td className="text-center">{PriorityShow(issue.priority)}</td>
+                                <td className="text-center">{ConditionShow(issue.condition)}</td>
                                 <td className="text-center">
                                     <button className="btn btn-danger mx-3"
                                             onClick={() => deleteIssue(issue.id, issue.reporter)}>Delete
