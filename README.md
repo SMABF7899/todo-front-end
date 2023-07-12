@@ -2,6 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Before running project, in ```src``` folder copy ```sample-configs.js``` to ```configs.js``` and change values.
 ## Available Scripts
 
 In the project directory, you can run:

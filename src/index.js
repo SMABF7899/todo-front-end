@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
+import './css/Vazir.css';
 import App from './js/Main/App';
 import reportWebVitals from './js/reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
