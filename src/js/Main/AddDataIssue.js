@@ -71,11 +71,11 @@ const AddDataIssue = () => {
                             <option value="3">High</option>
                         </Form.Control>
                     </Form.Group>
-                    <Button variant="primary" type="submit" className="mt-3" onClick={reloadPage}
+                    <Button variant="primary" type="submit" className="mt-3 my-3" onClick={reloadPage}
                             disabled={formIssueData.summary === "" || formIssueData.description === "" || formIssueData.priority === ""}>
                         Add
                     </Button>
-                    <p id="info-message" className="info"></p> {}
+                    <div id="info-message" className="" style={{width: '100%', fontSize: '16px'}}></div> {}
                 </Form>
             </Modal.Body>
         </Modal>

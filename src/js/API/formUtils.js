@@ -36,10 +36,20 @@ export const issuesFormFilterData = {
     condition: ''
 }
 
-export const displayMessage = (message) => {
-    const infoElement = document.getElementById('info-message');
-    if (infoElement) {
-        infoElement.innerText = message;
+export const displayErrorMessage = (message) => {
+    const errorElement = document.getElementById('info-message');
+    if (errorElement) {
+        errorElement.className = "badge bg-danger"
+        errorElement.innerText = message;
+    }
+};
+
+
+export const displaySuccessMessage = (message) => {
+    const successElement = document.getElementById('info-message');
+    if (successElement) {
+        successElement.className = "badge bg-success"
+        successElement.innerText = message;
     }
 };
 
@@ -53,7 +63,7 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
 
     submitFormData(formData)
         .then(data => {
-            displayMessage(data.message)
+            displaySuccessMessage(data.message)
             console.log(data.message);
             if (key != null && key === 'Token') {
                 localStorage.setItem(key, data.jwt);
@@ -64,7 +74,7 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
             }, 2000);
         })
         .catch(error => {
-            displayMessage(error.response.data.message)
+            displayErrorMessage(error.response.data.message)
             console.error(error.response.data.message);
         });
 };
@@ -72,7 +82,7 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
 export const handleSubmitFormIssue = (event, formData, submitFormData) => {
     event.preventDefault();
     if (formData.priority === '') {
-        displayMessage("Please specify the priority")
+        displayErrorMessage("Please specify the priority")
         return;
     } else
         formData.priority = parseInt(formData.priority);
@@ -80,11 +90,11 @@ export const handleSubmitFormIssue = (event, formData, submitFormData) => {
     submitFormData(formData)
         .then(data => {
             console.log(data.message);
-            displayMessage(data.message);
+            displaySuccessMessage(data.message);
         })
         .catch(error => {
             console.error(error.response.data.message);
-            displayMessage(error.response.data.message);
+            displayErrorMessage(error.response.data.message);
         });
 };
 
@@ -97,11 +107,11 @@ export const handleSubmitFormIssueEdit = (event, formData, submitFormData) => {
     submitFormData(formData)
         .then(data => {
             console.log(data.message);
-            displayMessage(data.message);
+            displaySuccessMessage(data.message);
         })
         .catch(error => {
             console.error(error.response.data.message);
-            displayMessage(error.response.data.message);
+            displayErrorMessage(error.response.data.message);
         });
 };
 
