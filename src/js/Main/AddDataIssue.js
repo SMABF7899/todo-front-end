@@ -60,11 +60,16 @@ const AddDataIssue = () => {
                         <Form.Group controlId="priority">
                             <Form.Label>Priority</Form.Label>
                             <Form.Control
-                                type="number"
+                                as="select"
                                 name="priority"
                                 value={formIssueData.priority}
                                 onChange={handleChangeData}
-                            />
+                            >
+                                <option value={""}>Select</option>
+                                <option value="1">Low</option>
+                                <option value="2">Medium</option>
+                                <option value="3">High</option>
+                            </Form.Control>
                         </Form.Group>
                         <Button variant="primary" type="submit" className="mt-3" onClick={reloadPage}>
                             Add
