@@ -71,7 +71,11 @@ export const handleSubmitForm = (event, formData, submitFormData, navigate, navi
 
 export const handleSubmitFormIssue = (event, formData, submitFormData) => {
     event.preventDefault();
-    formData.priority = parseInt(formData.priority)
+    if (formData.priority === '') {
+        displayMessage("Please specify the priority")
+        return;
+    } else
+        formData.priority = parseInt(formData.priority);
 
     submitFormData(formData)
         .then(data => {
