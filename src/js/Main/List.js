@@ -3,7 +3,8 @@ import "../../css/List.css"
 import AddDataIssue from "./AddDataIssue";
 import ShowInfoIssue from "./ShowInfoIssue";
 import EditDataIssue from "./EditDataIssue";
-import {GetAllIssues, DeleteIssueData} from "../API/api";
+import DeleteIssue from "./DeleteIssue";
+import {GetAllIssues} from "../API/api";
 import {Button, Col, Dropdown, Row} from "react-bootstrap";
 import {FilterIssuesData} from "./FilterIssuesData";
 
@@ -34,22 +35,6 @@ const List = () => {
                 console.log("ERROR 1 : " + error.response.data.message);
             })
     }, [setFormDataIssuesFilter]);
-
-    const deleteIssue = (id, reporter) => {
-        const jsonData = {
-            reporter: reporter,
-            id: id
-        }
-        DeleteIssueData(jsonData)
-        setTimeout(() => {
-            GetAllIssues(setFormDataIssuesFilter)
-                .then()
-                .catch(error => {
-                    console.log("ERROR 2 : " + error.response.data.message);
-                    window.location.reload();
-                })
-        }, 250);
-    }
 
     const PriorityShow = (priority) => {
         if (priority === 1)
@@ -214,9 +199,10 @@ const List = () => {
                                 <td className="text-center">{PriorityShow(issue.priority)}</td>
                                 <td className="text-center">{ConditionShow(issue.condition)}</td>
                                 <td className="text-center">
-                                    <button className="btn btn-danger mx-3"
-                                            onClick={() => deleteIssue(issue.id, issue.reporter)}>Delete
-                                    </button>
+                                    {/*<button className="btn btn-danger mx-3"*/}
+                                    {/*        onClick={() => deleteIssue(issue.id, issue.reporter)}>Delete*/}
+                                    {/*</button>*/}
+                                    <DeleteIssue onDeleteIssue={issue}/>
                                     <ShowInfoIssue onViewIssue={issue}/>
                                     <EditDataIssue onEditIssue={issue}/>
                                 </td>
