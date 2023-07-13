@@ -7,6 +7,24 @@ const ShowInfoIssue = ({onViewIssue}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const PriorityShow = (priority) => {
+        if (priority === 1)
+            return "Low"
+        if (priority === 2)
+            return "Medium"
+        if (priority === 3)
+            return "High"
+    }
+
+    const ConditionShow = (condition) => {
+        if (condition === 1)
+            return "To Do"
+        if (condition === 2)
+            return "In Progress"
+        if (condition === 3)
+            return "Done"
+    }
+
     return (
         <>
             <Button variant="info" onClick={handleShow}>
@@ -20,8 +38,9 @@ const ShowInfoIssue = ({onViewIssue}) => {
                 <Modal.Body>
                     <Form>
                         <Form.Group controlId="id">
-                            <Form.Label>ID</Form.Label>
+                            <Form.Label className="mb-0">ID</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 type="number"
                                 name="summary"
                                 value={onViewIssue.id}
@@ -29,8 +48,9 @@ const ShowInfoIssue = ({onViewIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="summary">
-                            <Form.Label>Summary</Form.Label>
+                            <Form.Label className="mb-0">Summary</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 type="text"
                                 name="summary"
                                 value={onViewIssue.summary}
@@ -38,8 +58,9 @@ const ShowInfoIssue = ({onViewIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="reporter">
-                            <Form.Label>Reporter</Form.Label>
+                            <Form.Label className="mb-0">Reporter</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 type="text"
                                 name="reporter"
                                 value={onViewIssue.reporter}
@@ -47,8 +68,9 @@ const ShowInfoIssue = ({onViewIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="description">
-                            <Form.Label>Description</Form.Label>
+                            <Form.Label className="mb-0">Description</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 as="textarea"
                                 rows={3}
                                 name="description"
@@ -57,20 +79,22 @@ const ShowInfoIssue = ({onViewIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="priority">
-                            <Form.Label>Priority</Form.Label>
+                            <Form.Label className="mb-0">Priority</Form.Label>
                             <Form.Control
-                                type="number"
+                                className="mb-3"
+                                type="text"
                                 name="priority"
-                                value={onViewIssue.priority}
+                                value={PriorityShow(onViewIssue.priority)}
                                 disabled
                             />
                         </Form.Group>
                         <Form.Group controlId="condition">
-                            <Form.Label>Condition</Form.Label>
+                            <Form.Label className="mb-0">Condition</Form.Label>
                             <Form.Control
-                                type="number"
+                                className="mb-3"
+                                type="text"
                                 name="condition"
-                                value={onViewIssue.condition}
+                                value={ConditionShow(onViewIssue.condition)}
                                 disabled
                             />
                         </Form.Group>

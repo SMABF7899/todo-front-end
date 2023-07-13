@@ -39,8 +39,9 @@ const EditDataIssue = ({onEditIssue}) => {
                 <Modal.Body>
                     <Form onSubmit={handleSubmitData}>
                         <Form.Group controlId="id">
-                            <Form.Label>ID</Form.Label>
+                            <Form.Label className="mb-0">ID</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 type="number"
                                 name="summary"
                                 value={formIssueData.id}
@@ -49,8 +50,9 @@ const EditDataIssue = ({onEditIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="summary">
-                            <Form.Label>Summary</Form.Label>
+                            <Form.Label className="mb-0">Summary</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 type="text"
                                 name="summary"
                                 value={summary}
@@ -58,8 +60,9 @@ const EditDataIssue = ({onEditIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="reporter">
-                            <Form.Label>Reporter</Form.Label>
+                            <Form.Label className="mb-0">Reporter</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 type="text"
                                 name="reporter"
                                 value={formIssueData.reporter}
@@ -68,8 +71,9 @@ const EditDataIssue = ({onEditIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="description">
-                            <Form.Label>Description</Form.Label>
+                            <Form.Label className="mb-0">Description</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 as="textarea"
                                 rows={3}
                                 value={description}
@@ -77,8 +81,9 @@ const EditDataIssue = ({onEditIssue}) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="priority">
-                            <Form.Label>Priority</Form.Label>
+                            <Form.Label className="mb-0">Priority</Form.Label>
                             <Form.Control
+                                className="mb-3"
                                 as="select"
                                 name="priority"
                                 value={priority}
@@ -91,7 +96,7 @@ const EditDataIssue = ({onEditIssue}) => {
                             </Form.Control>
                         </Form.Group>
                         <Form.Group controlId="condition">
-                            <Form.Label>Condition</Form.Label>
+                            <Form.Label className="mb-0">Condition</Form.Label>
                             <Form.Control
                                 as="select"
                                 name="condition"
@@ -104,7 +109,7 @@ const EditDataIssue = ({onEditIssue}) => {
                                 <option value="3">Done</option>
                             </Form.Control>
                         </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-3 my-3" onClick={reloadPage}
+                        <Button variant="primary" type="submit" className="mt-4" onClick={reloadPage}
                                 disabled={formIssueData.summary === "" || formIssueData.description === "" || formIssueData.condition === "" || formIssueData.priority === ""}>
                             Edit
                         </Button>
