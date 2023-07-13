@@ -114,3 +114,19 @@ export const SubmitFormIssuesFilterData = (formData) => {
             throw error;
         });
 };
+
+export const CheckToken = () => {
+    const username = localStorage.getItem('Username');
+    const token = localStorage.getItem('Token')
+    return axios.post(API_ADDRESS + 'checkJWT?username=' + username + '&jwt=' + token, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+             return response.data;
+        })
+        .catch(error => {
+            throw error;
+        })
+};
