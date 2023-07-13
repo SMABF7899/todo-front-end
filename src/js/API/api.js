@@ -59,7 +59,8 @@ export const DeleteIssueData = (formData) => {
         }
     })
         .then(response => {
-            console.log(response.data.message)
+            console.log(response.data.message);
+            return response.data.message;
         })
         .catch(error => {
             throw error;
