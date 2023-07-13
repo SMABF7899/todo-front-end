@@ -75,7 +75,7 @@ const AddDataIssue = () => {
                             <option value="3">High</option>
                         </Form.Control>
                     </Form.Group>
-                    <Button variant="primary" type="submit" className="mt-2" onClick={reloadPage}
+                    <Button variant="primary" type="submit" className="my-2" onClick={reloadPage}
                             disabled={formIssueData.summary === "" || formIssueData.description === "" || formIssueData.priority === ""}>
                         Add
                     </Button>

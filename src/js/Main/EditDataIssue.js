@@ -109,7 +109,7 @@ const EditDataIssue = ({onEditIssue}) => {
                                 <option value="3">Done</option>
                             </Form.Control>
                         </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-4" onClick={reloadPage}
+                        <Button variant="primary" type="submit" className="mt-3 my-2" onClick={reloadPage}
                                 disabled={formIssueData.summary === "" || formIssueData.description === "" || formIssueData.condition === "" || formIssueData.priority === ""}>
                             Edit
                         </Button>
