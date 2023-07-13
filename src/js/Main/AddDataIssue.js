@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Modal, Button, Form} from 'react-bootstrap';
 import {useFormIssue} from "../API/formHooks";
 
 const AddDataIssue = () => {
@@ -18,61 +18,67 @@ const AddDataIssue = () => {
 
     return (
         <body className="dark-mode">
-            <Button variant="success" onClick={handleShow}>
-                Add Issue
-            </Button>
+        <Button variant="success" onClick={handleShow}>
+            Add Issue
+        </Button>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Issue</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form onSubmit={handleSubmitData}>
-                        <Form.Group controlId="summary">
-                            <Form.Label>Summary</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="summary"
-                                value={formIssueData.summary}
-                                onChange={handleChangeData}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="reporter">
-                            <Form.Label>Reporter</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="reporter"
-                                value={formIssueData.reporter}
-                                onChange={handleChangeData}
-                                disabled
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="description">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                rows={3}
-                                name="description"
-                                value={formIssueData.description}
-                                onChange={handleChangeData}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="priority">
-                            <Form.Label>Priority</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name="priority"
-                                value={formIssueData.priority}
-                                onChange={handleChangeData}
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" className="mt-3" onClick={reloadPage}>
-                            Add
-                        </Button>
-                        <p id="info-message" className="info"></p> {}
-                    </Form>
-                </Modal.Body>
-            </Modal>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Add Issue</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form onSubmit={handleSubmitData}>
+                    <Form.Group controlId="summary">
+                        <Form.Label>Summary</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="summary"
+                            value={formIssueData.summary}
+                            onChange={handleChangeData}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="reporter">
+                        <Form.Label>Reporter</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="reporter"
+                            value={formIssueData.reporter}
+                            onChange={handleChangeData}
+                            disabled
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="description">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control
+                            as="textarea"
+                            rows={3}
+                            name="description"
+                            value={formIssueData.description}
+                            onChange={handleChangeData}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="priority">
+                        <Form.Label>Priority</Form.Label>
+                        <Form.Control
+                            as="select"
+                            name="priority"
+                            value={formIssueData.priority}
+                            onChange={handleChangeData}
+                        >
+                            <option value={""}>Select</option>
+                            <option value="1">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="3">High</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Button variant="primary" type="submit" className="mt-3 my-3" onClick={reloadPage}
+                            disabled={formIssueData.summary === "" || formIssueData.description === "" || formIssueData.priority === ""}>
+                        Add
+                    </Button>
+                    <div id="info-message" className="" style={{width: '100%', fontSize: '16px'}}></div> {}
+                </Form>
+            </Modal.Body>
+        </Modal>
         </body>
     );
 };

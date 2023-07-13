@@ -41,7 +41,7 @@ function SignupForm() {
                     <div className="my-3">
                         <button type="submit" className="btn btn-primary w-100 py-2">Signup</button>
                     </div>
-                    <p id="info-message" className="info"></p> {}
+                    <div id="info-message" className="" style={{width: '100%', fontSize: '16px'}}></div> {}
                 </form>
             </div>
         </div>

@@ -1,10 +1,11 @@
 // File: api.js
 import axios from 'axios';
+import {API_ADDRESS} from "../../configs";
 
 export const submitFormSignupData = (formData) => {
     const formDataJson = JSON.stringify(formData);
 
-    return axios.post('http://127.0.0.1:5000/signup', formDataJson, {
+    return axios.post(API_ADDRESS + 'signup', formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -20,7 +21,7 @@ export const submitFormSignupData = (formData) => {
 export const submitFormLoginData = (formData) => {
     const formDataJson = JSON.stringify(formData);
 
-    return axios.post('http://127.0.0.1:5000/login', formDataJson, {
+    return axios.post(API_ADDRESS + 'login', formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -36,7 +37,7 @@ export const submitFormLoginData = (formData) => {
 export const GetAllIssues = (setDataIssues) => {
     const username = localStorage.getItem('Username');
     const token = localStorage.getItem('Token')
-    return axios.post('http://127.0.0.1:5000/allIssues?reporter=' + username + '&jwt=' + token, {
+    return axios.post(API_ADDRESS + 'allIssues?reporter=' + username + '&jwt=' + token, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -52,7 +53,7 @@ export const GetAllIssues = (setDataIssues) => {
 export const DeleteIssueData = (formData) => {
     const token = localStorage.getItem('Token');
     const formDataJson = JSON.stringify(formData);
-    return axios.post('http://127.0.0.1:5000/deleteIssue?jwt=' + token, formDataJson, {
+    return axios.post(API_ADDRESS + 'deleteIssue?jwt=' + token, formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -68,7 +69,7 @@ export const DeleteIssueData = (formData) => {
 export const submitFormIssueData = (formData) => {
     const formDataJson = JSON.stringify(formData);
     const token = localStorage.getItem('Token');
-    return axios.post('http://127.0.0.1:5000/createIssue?jwt=' + token, formDataJson, {
+    return axios.post(API_ADDRESS + 'createIssue?jwt=' + token, formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -84,7 +85,7 @@ export const submitFormIssueData = (formData) => {
 export const submitFormIssueEditData = (formData) => {
     const formDataJson = JSON.stringify(formData);
     const token = localStorage.getItem('Token');
-    return axios.post('http://127.0.0.1:5000/editIssue?jwt=' + token, formDataJson, {
+    return axios.post(API_ADDRESS + 'editIssue?jwt=' + token, formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -100,7 +101,7 @@ export const submitFormIssueEditData = (formData) => {
 export const SubmitFormIssuesFilterData = (formData) => {
     const formDataJson = JSON.stringify(formData);
     const token = localStorage.getItem('Token');
-    return axios.post('http://127.0.0.1:5000/filterIssues?jwt=' + token, formDataJson, {
+    return axios.post(API_ADDRESS + 'filterIssues?jwt=' + token, formDataJson, {
         headers: {
             'Content-Type': 'application/json'
         }
