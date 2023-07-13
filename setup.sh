@@ -8,7 +8,7 @@ NC='\033[0m'
 set -e
 echo -e "${YELLOW}[local] cp src/sample-configs.js src/configs.js${NC}"
 cp src/sample-configs.js src/configs.js
-echo -e "${YELLOW}[local] sed -i "s+API_ADDRESS :.*+API_ADDRESS : \"$API_ADDRESS\"+g" src/configs.js${NC}"
+echo -e "${YELLOW}[local] sed -i "s+API_ADDRESS :.*+API_ADDRESS : \"API_ADDRESS\"+g" src/configs.js${NC}"
 sed -i "s+API_ADDRESS :.*+API_ADDRESS : \"$API_ADDRESS\"+g" src/configs.js
 echo -e "${YELLOW}[local] docker build --rm -t todo-list-front-end:latest .${NC}"
 docker build --rm -t todo-list-front-end:latest .
