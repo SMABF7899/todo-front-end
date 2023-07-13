@@ -77,14 +77,69 @@ const List = () => {
                 <AddDataIssue/>
             </div>
             {(formDataIssuesFilter.length === 0) ?
-                <figure>
-                    <blockquote className="blockquote">
-                        <h3 className="text-center display-3">You have no Issue</h3>
-                    </blockquote>
-                    <figcaption className="display-6 text-center">
-                        Click on <cite title="Source Title">Add Issue</cite>
-                    </figcaption>
-                </figure> :
+                <div>
+                    <div className="text-center justify-content-center align-items-center dark-mode glass my-5">
+                        <Row>
+                            <Col>
+                                <Dropdown onSelect={handleSelectTime}>
+                                    <Dropdown.Toggle variant="outline-light" id="dropdown-custom">
+                                        {sortByTime}
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <React.Fragment>
+                                            <Dropdown.Item eventKey="">None</Dropdown.Item>
+                                            <Dropdown.Item eventKey="new">Newest</Dropdown.Item>
+                                            <Dropdown.Item eventKey="old">Oldest</Dropdown.Item>
+                                        </React.Fragment>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                            <Col>
+                                <Dropdown onSelect={handleSelectPriority}>
+                                    <Dropdown.Toggle variant="outline-light" id="dropdown-custom">
+                                        {sortByPriority}
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <React.Fragment>
+                                            <Dropdown.Item eventKey="">None</Dropdown.Item>
+                                            <Dropdown.Item eventKey={1}>Low</Dropdown.Item>
+                                            <Dropdown.Item eventKey={2}>Medium</Dropdown.Item>
+                                            <Dropdown.Item eventKey={3}>High</Dropdown.Item>
+                                        </React.Fragment>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                            <Col>
+                                <Dropdown onSelect={handleSelectCondition}>
+                                    <Dropdown.Toggle variant="outline-light" id="dropdown-custom">
+                                        {sortByCondition}
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <React.Fragment>
+                                            <Dropdown.Item eventKey="">None</Dropdown.Item>
+                                            <Dropdown.Item eventKey={1}>To Do</Dropdown.Item>
+                                            <Dropdown.Item eventKey={2}>In Progress</Dropdown.Item>
+                                            <Dropdown.Item eventKey={3}>Done</Dropdown.Item>
+                                        </React.Fragment>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                            <Col>
+                                <Button className="btn btn-light" onClick={handleSubmitData}>
+                                    Filter Issue
+                                </Button>
+                            </Col>
+                        </Row>
+                    </div>
+                    <figure>
+                        <blockquote className="blockquote">
+                            <h3 className="text-center display-3">You have no Issue</h3>
+                        </blockquote>
+                    </figure>
+                </div> :
                 <div className="text-center justify-content-center align-items-center dark-mode glass">
                     <Row>
                         <Col>
@@ -140,6 +195,7 @@ const List = () => {
                             </Button>
                         </Col>
                     </Row>
+                    <hr className="line"/>
                     <table className="table dark-mode mt-3">
                         <thead className="table-dark">
                         <tr>
