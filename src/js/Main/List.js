@@ -57,7 +57,6 @@ const List = () => {
     return (
         <body className="dark-mode">
         <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
-            <h1 className="mb-4">Todo List</h1>
             <div className="mb-5">
                 <AddDataIssue/>
             </div>
