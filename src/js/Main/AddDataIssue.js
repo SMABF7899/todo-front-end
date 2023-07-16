@@ -18,7 +18,7 @@ const AddDataIssue = () => {
 
     return (
         <body className="dark-mode">
-        <Button variant="success" onClick={handleShow}>
+        <Button variant="success" className="mt-5" onClick={handleShow}>
             Add Issue
         </Button>
 
