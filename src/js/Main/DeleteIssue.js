@@ -49,7 +49,7 @@ const DeleteIssue = ({onDeleteIssue}) => {
                 </Modal.Header>
                 <Modal.Body>
                     <p className="lead">Are you sure about deleting issue with ID number {onDeleteIssue.id}?</p>
-                    <Button className="mx-3 btn-danger px-4" onClick={() => deleteIssue(onDeleteIssue.id, onDeleteIssue.reporter)}>Yes</Button>
+                    <Button className="mx-3 btn-danger px-4 mb-2" onClick={() => deleteIssue(onDeleteIssue.id, onDeleteIssue.reporter)}>Yes</Button>
                     <Button className="mx-3 btn-primary px-4 mb-2" onClick={handleClose}>No</Button>
                     <div id="info-message" className="" style={{width: '100%', fontSize: '16px'}}></div> {}
                 </Modal.Body>
