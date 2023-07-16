@@ -94,7 +94,10 @@ export const handleSubmitFormIssue = (event, formData, submitFormData) => {
         })
         .catch(error => {
             console.error(error.response.data.message);
-            displayErrorMessage(error.response.data.message);
+            if (error.response.data.message === false)
+                displayErrorMessage("Please login first !");
+            else
+                displayErrorMessage(error.response.data.message);
         });
 };
 
