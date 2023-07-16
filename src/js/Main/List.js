@@ -7,6 +7,7 @@ import DeleteIssue from "./DeleteIssue";
 import {GetAllIssues} from "../API/api";
 import {Button, Col, Dropdown, Row} from "react-bootstrap";
 import {FilterIssuesData} from "./FilterIssuesData";
+import Logo from "./Logo";
 
 
 const List = () => {
@@ -57,6 +58,7 @@ const List = () => {
     return (
         <body className="dark-mode">
         <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
+            <Logo/>
             <div className="mb-5">
                 <AddDataIssue/>
             </div>
