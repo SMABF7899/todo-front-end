@@ -30,6 +30,12 @@ function Home() {
             });
     }, [check]);
 
+    const handleLogout = () => {
+        localStorage.clear();
+        window.location.reload();
+    };
+
+
     if (loading) {
         return (
             <div className="loading-container">
@@ -46,8 +52,8 @@ function Home() {
                 {check ?
                     <Row>
                         <Col>
-                            <Button variant="danger" size="lg">
-                                <Link to="/logout" className="nav-link">Logout</Link>
+                            <Button variant="danger" size="lg" onClick={handleLogout}>
+                                Logout
                             </Button>
                         </Col>
                         <Col>
