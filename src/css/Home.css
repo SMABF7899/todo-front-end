@@ -25,10 +25,7 @@
 }
 
 .Home-link {
-    color: #61dafb;
-    font-size: 30px;
-    text-decoration: none;
-    font-family: 'TR2N', TR2N Tahoma, Arial, sans-serif !important;
+    margin-top: 30vh;
 }
 
 .loading-container {

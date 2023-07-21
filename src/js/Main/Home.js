@@ -75,14 +75,8 @@ function Home() {
                         </Col>
                     </Row>
                 }
-                <br/>
-                <a
-                    className="Home-link"
-                    href="https://smabf.ir/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    SMABF.IR
+                <a href="https://smabf.ir/" className="d-flex align-items-center justify-content-center Home-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://smabf.ir/wp-content/uploads/2023/02/SMABF.png" height="30" alt="smabf.ir"/>
                 </a>
             </header>
         </div>
