@@ -17,8 +17,8 @@ const AddDataIssue = () => {
     };
 
     return (
-        <body className="dark-mode">
-        <Button variant="success" className="mt-5" onClick={handleShow}>
+        <>
+        <Button variant="success" onClick={handleShow}>
             Add Issue
         </Button>
 
@@ -83,7 +83,7 @@ const AddDataIssue = () => {
                 </Form>
             </Modal.Body>
         </Modal>
-        </body>
+        </>
     );
 };
 

@@ -7,7 +7,7 @@ import DeleteIssue from "./DeleteIssue";
 import {GetAllIssues} from "../API/api";
 import {Button, Col, Dropdown, Row} from "react-bootstrap";
 import {FilterIssuesData} from "./FilterIssuesData";
-import Logo from "./Logo";
+import { useNavigate } from "react-router-dom";
 
 
 const List = () => {
@@ -55,17 +55,25 @@ const List = () => {
             return "Done"
     }
 
+    const navigate = useNavigate();
+
+    const goToHomePage = () => {
+        navigate('/');
+    };
+
     return (
         <body className="dark-mode">
-        <div className="container justify-content-center align-items-center dark-mode" style={{height: '100vh'}}>
-            <Logo/>
-            <div className="mb-5">
-                <AddDataIssue/>
-            </div>
+        <div style={{height: '100vh'}}>
+            <Button variant="dark" className="m-4 logo-font btn-lg" onClick={goToHomePage}>
+                TODO
+            </Button>
             {(formDataIssuesFilter.length === 0) ?
-                <div>
-                    <div className="text-center justify-content-center align-items-center dark-mode glass my-5">
+                <div className="container justify-content-center align-items-center dark-mode">
+                    <div className="text-center glass mb-5">
                         <Row>
+                            <Col>
+                                <AddDataIssue/>
+                            </Col>
                             <Col>
                                 <Dropdown onSelect={handleSelectTime}>
                                     <Dropdown.Toggle variant="outline-light" id="dropdown-custom">
@@ -126,8 +134,11 @@ const List = () => {
                         </blockquote>
                     </figure>
                 </div> :
-                <div className="text-center justify-content-center align-items-center dark-mode glass">
+                <div className="container justify-content-center align-items-center dark-mode text-center glass">
                     <Row>
+                        <Col>
+                            <AddDataIssue/>
+                        </Col>
                         <Col>
                             <Dropdown onSelect={handleSelectTime}>
                                 <Dropdown.Toggle variant="outline-light" id="dropdown-custom">

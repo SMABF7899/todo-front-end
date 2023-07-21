@@ -56,3 +56,15 @@ hr.line {
     border: 3px solid white;
     border-radius: 5px;
 }
+
+Button.logo-font {
+    font-family: 'TR2N', TR2N Tahoma, Arial, sans-serif !important;
+    font-size: 30px;
+}
+
+
+@font-face {
+    font-family: TR2N;
+    src: url("../fonts/ttf/Tr2n.ttf"),
+    url("../fonts/ttf/Tr2n.ttf") format('truetype');
+}

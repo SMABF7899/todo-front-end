@@ -1,4 +1,3 @@
-import logo from '../../assets/TODO_WHITE.png';
 import '../../css/Home.css';
 import React, {useEffect, useRef, useState} from "react";
 import {CheckToken} from "../API/api";
@@ -47,8 +46,9 @@ function Home() {
     return (
         <div className="Home">
             <header className="Home-header">
-                <img src={logo} className="Home-logo" alt="logo"/>
-                <br/>
+                <div className="Home-logo">
+                    TODO
+                </div>
                 {check ?
                     <Row>
                         <Col>
@@ -82,7 +82,7 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    SMABF
+                    SMABF.IR
                 </a>
             </header>
         </div>
