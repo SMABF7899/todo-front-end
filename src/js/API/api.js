@@ -130,3 +130,18 @@ export const CheckToken = () => {
             throw error;
         })
 };
+
+export const CheckValidationEmail = () => {
+    const username = localStorage.getItem('Username');
+    return axios.post(API_ADDRESS + 'checkValidationEmail?username=' + username, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error;
+        })
+};

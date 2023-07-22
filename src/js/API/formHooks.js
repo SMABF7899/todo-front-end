@@ -1,6 +1,6 @@
 // File: formHooks.js
 
-import {useState} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {
     signupFormData,
@@ -14,7 +14,7 @@ import {
     handleSubmitFormIssueEdit,
     handleSubmitFormIssuesFilter
 } from './formUtils';
-import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData, SubmitFormIssuesFilterData} from './api';
+import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData, SubmitFormIssuesFilterData, CheckValidationEmail} from './api';
 
 export const useFormSignup = () => {
     const navigate = useNavigate();
@@ -34,7 +34,25 @@ export const useFormSignup = () => {
 
 export const useFormLogin = () => {
     const navigate = useNavigate();
-    const navigatePath = '/dashboard';
+    let navigatePath = "/validation";
+    const isFirstRender = useRef(true);
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        CheckValidationEmail()
+            .then(data => {
+                if (data.message === true)
+                    navigatePath = "/dashboard"
+            })
+            .catch(error => {
+                console.error(error.response.data.message);
+            })
+    }, []);
+
     const [formLoginData, setFormLoginData] = useState(loginFormData);
 
     const handleChange = (event) => {
