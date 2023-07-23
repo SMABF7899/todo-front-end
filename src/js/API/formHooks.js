@@ -34,24 +34,7 @@ export const useFormSignup = () => {
 
 export const useFormLogin = () => {
     const navigate = useNavigate();
-    let navigatePath = "/validation";
-    const isFirstRender = useRef(true);
-
-    useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false;
-            return;
-        }
-
-        CheckValidationEmail()
-            .then(data => {
-                if (data.message === true)
-                    navigatePath = "/dashboard"
-            })
-            .catch(error => {
-                console.error(error.response.data.message);
-            })
-    }, []);
+    let navigatePath = "/dashboard";
 
     const [formLoginData, setFormLoginData] = useState(loginFormData);
 
