@@ -1,9 +1,16 @@
 import React from 'react';
 import '../../css/Form.css';
 import {useFormLogin} from '../API/formHooks';
+import {Button} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
     const {formLoginData, handleChange, handleSubmit} = useFormLogin();
+    const navigate = useNavigate();
+
+    const goToHomePage = () => {
+        navigate('/');
+    };
 
     return (
         <body className="dark-mode">
@@ -27,6 +34,9 @@ function LoginForm() {
                         <button type="submit" className="btn btn-primary w-100 py-2">Login</button>
                     </div>
                     <div id="info-message" className="" style={{width: '100%', fontSize: '16px'}}></div> {}
+                    <Button variant="dark" className="container logo-font btn-lg mt-3" onClick={goToHomePage}>
+                        TODO
+                    </Button>
                 </form>
             </div>
         </div>
