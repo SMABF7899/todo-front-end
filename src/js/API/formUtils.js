@@ -106,9 +106,11 @@ export const handleSubmitLoginForm = (event, formData, submitFormData, navigate,
                 SendCodeForEmailValidation(formData.username)
                     .then(result => {
                         console.log(result.message);
+                        displaySuccessMessage(result.message)
                     })
                     .catch(result => {
                         console.log(result.response.data.message);
+                        displayErrorMessage(result.response.data.message);
                     })
             });
     }, 200)
