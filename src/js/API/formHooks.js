@@ -9,12 +9,19 @@ import {
     issueFormEditData,
     issuesFormFilterData,
     handleFormChange,
-    handleSubmitForm,
     handleSubmitFormIssue,
     handleSubmitFormIssueEdit,
-    handleSubmitFormIssuesFilter
+    handleSubmitFormIssuesFilter,
+    handleSubmitLoginForm,
+    handleSubmitSignupForm
 } from './formUtils';
-import {submitFormSignupData, submitFormLoginData, submitFormIssueData, submitFormIssueEditData, SubmitFormIssuesFilterData} from './api';
+import {
+    submitFormSignupData,
+    submitFormLoginData,
+    submitFormIssueData,
+    submitFormIssueEditData,
+    SubmitFormIssuesFilterData
+} from './api';
 
 export const useFormSignup = () => {
     const navigate = useNavigate();
@@ -26,7 +33,7 @@ export const useFormSignup = () => {
     };
 
     const handleSubmit = (event) => {
-        handleSubmitForm(event, formSignupData, submitFormSignupData, navigate, navigatePath);
+        handleSubmitSignupForm(event, formSignupData, submitFormSignupData, navigate, navigatePath);
     };
 
     return {formSignupData, handleChange, handleSubmit};
@@ -34,7 +41,8 @@ export const useFormSignup = () => {
 
 export const useFormLogin = () => {
     const navigate = useNavigate();
-    const navigatePath = '/dashboard';
+    let navigatePath = "/dashboard";
+
     const [formLoginData, setFormLoginData] = useState(loginFormData);
 
     const handleChange = (event) => {
@@ -42,7 +50,7 @@ export const useFormLogin = () => {
     };
 
     const handleSubmit = (event) => {
-        handleSubmitForm(event, formLoginData, submitFormLoginData, navigate, navigatePath, 'Token');
+        handleSubmitLoginForm(event, formLoginData, submitFormLoginData, navigate, navigatePath);
     };
 
     return {formLoginData, handleChange, handleSubmit};

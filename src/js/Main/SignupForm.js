@@ -1,12 +1,32 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useFormSignup} from '../API/formHooks';
 import '../../css/Form.css'
 import {Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {CheckToken} from "../API/api";
 
 function SignupForm() {
     const {formSignupData, handleChange, handleSubmit} = useFormSignup();
     const navigate = useNavigate();
+    const isFirstRender = useRef(true);
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        setTimeout(() => {
+            CheckToken()
+                .then(data => {
+                    console.log(data.message);
+                    navigate('/');
+                })
+                .catch(error => {
+                    console.error(error.response.data.message);
+                })
+        }, 50);
+    }, []);
 
     const goToHomePage = () => {
         navigate('/');

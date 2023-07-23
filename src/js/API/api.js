@@ -130,3 +130,46 @@ export const CheckToken = () => {
             throw error;
         })
 };
+
+export const CheckValidationEmail = (username) => {
+    return axios.post(API_ADDRESS + 'checkValidationEmail?username=' + username, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error;
+        })
+};
+
+export const SendCodeForEmailValidation = (username) => {
+    return axios.post(API_ADDRESS + 'sendCodeForEmailValidation?username=' + username, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error;
+        })
+};
+
+export const CheckCodeForEmailValidation = (code) => {
+    const username = localStorage.getItem('Username');
+    return axios.post(API_ADDRESS + 'checkCodeForEmailValidation?username=' + username + "&code=" + code, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            throw error;
+        })
+};
