@@ -131,8 +131,7 @@ export const CheckToken = () => {
         })
 };
 
-export const CheckValidationEmail = () => {
-    const username = localStorage.getItem('Username');
+export const CheckValidationEmail = (username) => {
     return axios.post(API_ADDRESS + 'checkValidationEmail?username=' + username, {
         headers: {
             'Content-Type': 'application/json'

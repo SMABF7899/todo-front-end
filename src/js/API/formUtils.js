@@ -1,5 +1,7 @@
 // File: formUtils.js
 
+import {CheckValidationEmail} from "./api";
+
 export const signupFormData = {
     firstName: '',
     lastName: '',
@@ -58,17 +60,41 @@ export const handleFormChange = (event, formData, setFormData) => {
 };
 
 
-export const handleSubmitForm = (event, formData, submitFormData, navigate, navigatePath, key) => {
+export const handleSubmitSignupForm = (event, formData, submitFormData, navigate, navigatePath, key) => {
     event.preventDefault();
 
     submitFormData(formData)
         .then(data => {
             displaySuccessMessage(data.message)
             console.log(data.message);
-            if (key != null && key === 'Token') {
-                localStorage.setItem(key, data.jwt);
-                localStorage.setItem('Username', formData.username);
-            }
+            setTimeout(() => {
+                navigate(navigatePath);
+            }, 2000);
+        })
+        .catch(error => {
+            displayErrorMessage(error.response.data.message)
+            console.error(error.response.data.message);
+        });
+};
+
+export const handleSubmitLoginForm = (event, formData, submitFormData, navigate, navigatePath) => {
+    event.preventDefault();
+
+    CheckValidationEmail(formData.username)
+        .then(data => {
+            console.log(data.message)
+        })
+        .catch(error => {
+            navigatePath = "/validation";
+            console.error(error.response.data);
+        })
+
+    submitFormData(formData)
+        .then(data => {
+            displaySuccessMessage(data.message)
+            console.log(data.message);
+            localStorage.setItem('Token', data.jwt);
+            localStorage.setItem('Username', formData.username);
             setTimeout(() => {
                 navigate(navigatePath);
             }, 2000);

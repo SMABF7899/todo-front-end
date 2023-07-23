@@ -4,7 +4,7 @@ import AddDataIssue from "./AddDataIssue";
 import ShowInfoIssue from "./ShowInfoIssue";
 import EditDataIssue from "./EditDataIssue";
 import DeleteIssue from "./DeleteIssue";
-import {GetAllIssues, CheckToken} from "../API/api";
+import {GetAllIssues, CheckToken, CheckValidationEmail} from "../API/api";
 import {Button, Col, Dropdown, Row} from "react-bootstrap";
 import {FilterIssuesData} from "./FilterIssuesData";
 import { useNavigate } from "react-router-dom";
@@ -34,18 +34,25 @@ const List = () => {
             CheckToken()
                 .then(data => {
                     console.log(data.message);
+                    CheckValidationEmail(localStorage.getItem('Username'))
+                        .then(data => {
+                            console.log(data.message)
+                            GetAllIssues(setFormDataIssuesFilter)
+                                .then()
+                                .catch(error => {
+                                    console.log("ERROR 1 : " + error.response.data.message);
+                                })
+                        })
+                        .catch(error => {
+                            navigate('/validation');
+                            console.error(error.response.data);
+                        })
                 })
                 .catch(error => {
                     console.error(error.response.data.message);
                     navigate('/');
                 })
         }, 50);
-
-        GetAllIssues(setFormDataIssuesFilter)
-            .then()
-            .catch(error => {
-                console.log("ERROR 1 : " + error.response.data.message);
-            })
     }, [setFormDataIssuesFilter]);
 
     const PriorityShow = (priority) => {

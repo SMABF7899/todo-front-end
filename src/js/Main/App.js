@@ -3,6 +3,7 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import List from "./List";
+import EmailValidationForm from "./EmailValidationForm";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/dashboard" element={<List/>}/>
+                    <Route path="/validation" element={<EmailValidationForm/>}/>
                 </Routes>
             </div>
         </BrowserRouter>

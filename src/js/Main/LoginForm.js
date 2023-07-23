@@ -3,7 +3,7 @@ import '../../css/Form.css';
 import {useFormLogin} from '../API/formHooks';
 import {Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import {CheckToken, GetAllIssues} from "../API/api";
+import {CheckToken} from "../API/api";
 
 function LoginForm() {
     const {formLoginData, handleChange, handleSubmit} = useFormLogin();
@@ -26,7 +26,7 @@ function LoginForm() {
                     console.error(error.response.data.message);
                 })
         }, 50);
-    }, []);
+    }, [navigate]);
 
     const goToHomePage = () => {
         navigate('/');
