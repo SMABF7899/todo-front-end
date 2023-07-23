@@ -21,7 +21,8 @@ const List = () => {
         handleSubmitData,
         formDataIssuesFilter,
         setFormDataIssuesFilter
-    } = FilterIssuesData()
+    } = FilterIssuesData();
+    const navigate = useNavigate();
     const isFirstRender = useRef(true);
 
     useEffect(() => {
@@ -33,10 +34,10 @@ const List = () => {
         setTimeout(() => {
             CheckToken()
                 .then(data => {
-                    console.log(data.message);
+                    console.log(data);
                     CheckValidationEmail(localStorage.getItem('Username'))
                         .then(data => {
-                            console.log(data.message)
+                            console.log(data)
                             GetAllIssues(setFormDataIssuesFilter)
                                 .then()
                                 .catch(error => {
@@ -53,7 +54,7 @@ const List = () => {
                     navigate('/');
                 })
         }, 50);
-    }, [setFormDataIssuesFilter]);
+    }, [setFormDataIssuesFilter, navigate]);
 
     const PriorityShow = (priority) => {
         if (priority === 1)
@@ -72,8 +73,6 @@ const List = () => {
         if (condition === 3)
             return "Done"
     }
-
-    const navigate = useNavigate();
 
     const goToHomePage = () => {
         navigate('/');
@@ -229,9 +228,6 @@ const List = () => {
                                 <td className="text-center">{PriorityShow(issue.priority)}</td>
                                 <td className="text-center">{ConditionShow(issue.condition)}</td>
                                 <td className="text-center">
-                                    {/*<button className="btn btn-danger mx-3"*/}
-                                    {/*        onClick={() => deleteIssue(issue.id, issue.reporter)}>Delete*/}
-                                    {/*</button>*/}
                                     <DeleteIssue onDeleteIssue={issue}/>
                                     <ShowInfoIssue onViewIssue={issue}/>
                                     <EditDataIssue onEditIssue={issue}/>

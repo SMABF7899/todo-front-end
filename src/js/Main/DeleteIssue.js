@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import {Modal, Button} from 'react-bootstrap';
-import {FilterIssuesData} from "./FilterIssuesData";
-import {DeleteIssueData, GetAllIssues} from "../API/api";
+import {DeleteIssueData} from "../API/api";
 import {displayErrorMessage, displaySuccessMessage} from "../API/formUtils";
 
 const DeleteIssue = ({onDeleteIssue}) => {
-    const {setFormDataIssuesFilter} = FilterIssuesData()
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const reloadPage = () => {
         setTimeout(() => {
             window.location.reload();
@@ -24,18 +27,8 @@ const DeleteIssue = ({onDeleteIssue}) => {
             .catch(error => {
                 console.log(error.response.data.message);
                 displayErrorMessage(error.response.data.message);
-            })
-        setTimeout(() => {
-            GetAllIssues(setFormDataIssuesFilter)
-                .then()
-                .catch(error => {
-                    console.log("ERROR 2 : " + error.response.data.message);
-                })
-        }, 250);
+            });
     }
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
         <>
